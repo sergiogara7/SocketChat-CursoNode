@@ -14,23 +14,26 @@ var usuario = {
 
 socket.on('connect', function() {
     //
-    console.log('Conectado al servidor');
+    //console.log('Conectado al servidor');
     //
     socket.emit('entrarChat', usuario, (resp) => {
-        console.log(resp);
+        //console.log(resp);
+        renderizarUsuarios(resp, usuario.sala);
     });
 });
 
 socket.on('disconnect', function() {
-    console.log('Perdimos conexión con el servidor');
+   //console.log('Perdimos conexión con el servidor');
 });
 
 socket.on('crearMensaje', (data) => {
-    console.log(data);
+    //console.log(data);
+    renderizarMensajes(data)
 })
 
 socket.on('listaPersonas', (data) => {
-    console.log(data);
+    //console.log(data);
+    renderizarUsuarios(data, usuario.sala);
 })
 
 socket.on('mensajePrivado', (data) => {
